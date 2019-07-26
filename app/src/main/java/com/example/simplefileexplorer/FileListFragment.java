@@ -56,8 +56,14 @@ abstract public class FileListFragment extends Fragment {
 
     public class FileLoader extends AsyncTask<Void,Void,Void> {
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected void onPreExecute() {
+            super.onPreExecute();
             mLoadingIndicator.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
             loadFiles(ROOT_DIR);
             return null;
         }

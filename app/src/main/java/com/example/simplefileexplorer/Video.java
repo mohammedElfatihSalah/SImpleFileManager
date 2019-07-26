@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import java.util.Date;
 
 public class Video extends MediaFile {
+    private boolean startedInitializing = false;
     private Bitmap bitmap;
     private int mPosition;
     private RecyclerAdapter mAdapter;
@@ -21,14 +22,20 @@ public class Video extends MediaFile {
     public void setImage(ImageView image , RecyclerAdapter adapter , int position) {
        // Bitmap thumb = ThumbnailUtils.createVideoThumbnail(getAbsolutePathName(), MediaStore.Images.Thumbnails.MINI_KIND);
         //image.setImageBitmap(thumb);
+
+        image.setScaleType(ImageView.ScaleType.FIT_XY);
         mPosition = position;
         mAdapter = adapter;
+        image.setImageResource(R.drawable.music_icon);
         if(bitmap != null){
             image.setImageBitmap(bitmap);
         }
         else{
-            image.setImageResource(R.drawable.music_icon);
-            new ThumbnailLoder().execute();
+            if(!startedInitializing) {
+                startedInitializing = true;
+
+                new ThumbnailLoder().execute();
+            }
         }
     }
 
