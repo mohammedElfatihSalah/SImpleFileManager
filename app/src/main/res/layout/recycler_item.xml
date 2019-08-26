@@ -1,54 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected_item_backgound"
     android:clickable="true">
+
     <ImageView
         android:id="@+id/item_icon"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_margin="2dp"
-        android:src="@drawable/music_icon">
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/music_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
     <TextView
         android:id="@+id/tv_item_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="20sp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_toRightOf="@id/item_icon"
-        android:layout_marginTop="5dp"/>
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/line"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="date"
         android:layout_below="@id/tv_item_name"
         android:layout_alignLeft="@id/tv_item_name"
-        android:layout_marginTop="2dp"/>
+        android:layout_marginTop="2dp"
+        android:text="date"
+        app:layout_constraintStart_toStartOf="@+id/tv_item_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_name" />
 
     <TextView
         android:id="@+id/tv_item_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_item_date"
+
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/tv_item_date"
         android:text="size"
-        android:layout_toRightOf="@id/tv_item_date"
-        android:layout_alignTop="@id/tv_item_date"
-        android:layout_marginLeft="10dp"/>
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_item_date"
+        app:layout_constraintStart_toEndOf="@+id/tv_item_date" />
+
 
     <View
-        android:layout_width="match_parent"
+        android:id="@+id/line"
+        android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_below="@+id/tv_item_date"
-        android:layout_toRightOf="@+id/item_icon"
-        android:layout_marginTop="4dp"
+        android:layout_below="@+id/tv_item_name"
         android:layout_alignParentBottom="true"
-        android:background="#d4d4d4" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/item_icon"
+        android:background="#d4d4d4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_icon" />
 
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
